@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TicketCollection;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -19,6 +20,14 @@ class TicketController extends Controller
         return view('ticket.index', [
             'tickets' => Ticket::all()
         ]);
+    }
+
+    /**
+     * All tickets return json.
+     */
+    public function indexJson()
+    {
+        return new TicketCollection(Ticket::all());
     }
 
     /**

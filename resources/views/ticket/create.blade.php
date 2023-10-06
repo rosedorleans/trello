@@ -4,12 +4,11 @@
             {{ __('New ticket') }}
         </h2>
     </x-slot>
-    <div class="flex items-center gap-4">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 pt-8 dark:text-gray-400">
         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             {{ __('Back') }}
         </x-nav-link>
     </div>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">

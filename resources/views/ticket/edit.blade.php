@@ -57,7 +57,7 @@
 
                         <div>
                             <x-input-label for="due_date" :value="__('Due date')" />
-                            <x-text-input id="due_date" name="due_date" type="date" class="mt-1 block w-full" :value="old('date', $ticket->date)" required autofocus autocomplete="due_date" />
+                            <x-text-input id="due_date" name="due_date" type="date" class="mt-1 block w-full" :value="old('due_date', $ticket->due_date)" required autofocus autocomplete="due_date" />
                             <x-input-error class="mt-2" :messages="$errors->get('due_date')" />
                         </div>
 
