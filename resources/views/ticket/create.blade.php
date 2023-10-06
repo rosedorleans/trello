@@ -13,7 +13,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl">
-                    <form method="post" action="{{ route('ticket.post') }}" class="mt-6 space-y-6">
+                    <form method="post" action="{{ route('ticket.post') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
                         @csrf
 
                         <div>
@@ -50,6 +50,12 @@
                             <x-input-label for="due_date" :value="__('Due date')" />
                             <x-text-input id="due_date" name="due_date" type="date" class="mt-1 block w-full" required autofocus autocomplete="due_date" />
                             <x-input-error class="mt-2" :messages="$errors->get('due_date')" />
+                        </div>
+
+                        <div>
+                            <x-input-label for="file" :value="__('File')" />
+                            <x-text-input id="file" name="file" type="file" class="mt-1 block w-full" required autofocus autocomplete="file" />
+                            <x-input-error class="mt-2" :messages="$errors->get('file')" />
                         </div>
 
                         <div class="flex items-center gap-4">

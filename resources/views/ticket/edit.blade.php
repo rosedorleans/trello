@@ -61,6 +61,12 @@
                             <x-input-error class="mt-2" :messages="$errors->get('due_date')" />
                         </div>
 
+                        <div>
+                            <x-input-label for="file" :value="__('File')" />
+                            <x-text-input id="file" name="file" type="file" class="mt-1 block w-full" :value="old('file', $ticket->file)"  required autofocus autocomplete="file" />
+                            <x-input-error class="mt-2" :messages="$errors->get('file')" />
+                        </div>
+
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
                         </div>

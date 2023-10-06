@@ -21,6 +21,7 @@ class Ticket extends Model
         'author_id',
         'assignee_id',
         'due_date',
+        'file'
     ];
 
     /**

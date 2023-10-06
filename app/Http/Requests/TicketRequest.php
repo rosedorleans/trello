@@ -11,7 +11,7 @@ class TicketRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,6 +27,7 @@ class TicketRequest extends FormRequest
             'author_id' => ['integer', 'max:3'],
             'assignee' => ['integer', 'max:3'],
             'due_date' => ['date'],
+            'file' => ['image']
         ];
     }
 }

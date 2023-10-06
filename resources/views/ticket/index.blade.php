@@ -47,6 +47,9 @@
                                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                                     {{ $ticket->due_date }}
                                 </p>
+                                @if ($ticket->file)
+                                    <img :href="{{ $ticket->file->path }}">
+                                @endif
                             </div>
                         </section>
                     </div>

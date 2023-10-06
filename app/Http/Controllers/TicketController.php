@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TicketRequest;
 use App\Http\Resources\TicketCollection;
 use App\Models\Ticket;
 use App\Models\User;
+use App\Models\File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class TicketController extends Controller
@@ -56,6 +59,19 @@ class TicketController extends Controller
     public function post(TicketRequest $request): RedirectResponse
     {
         $req = $request->all();
+
+        $fileModel = new File;
+        if($request->file()) {
+            $validation = $request->validate([
+                'file'  =>  'required|file|image|mimes:jpeg,png,jpg|max:2048'
+            ]);
+        
+            $file = $validation['file'];
+            $fileName = 'ticket-'.time().'.'.$file->getClientOriginalExtension();
+
+            $storage = Storage::disk('local')->put($fileName, $file);
+        }
+
         Ticket::create($req);
 
         return Redirect::route('dashboard')->with('status', 'ticket-created');
