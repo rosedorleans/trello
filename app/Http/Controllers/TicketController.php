@@ -69,7 +69,9 @@ class TicketController extends Controller
             $file = $validation['file'];
             $fileName = 'ticket-'.time().'.'.$file->getClientOriginalExtension();
 
-            $storage = Storage::disk('local')->put($fileName, $file);
+            $storage = Storage::disk('public')->put($fileName, $file);
+
+            $req["file"] = Storage::url($storage);
         }
 
         Ticket::create($req);
